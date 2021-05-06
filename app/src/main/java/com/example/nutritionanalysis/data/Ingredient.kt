@@ -1,0 +1,11 @@
+package com.example.nutritionanalysis.data
+
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
+
+@Parcelize
+data class Ingredient (
+    val text : String,
+     val parsed : @RawValue ArrayList<Parsed>
+) : Parcelable
