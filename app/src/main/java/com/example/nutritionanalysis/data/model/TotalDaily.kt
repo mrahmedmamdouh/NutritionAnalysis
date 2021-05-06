@@ -1,10 +1,11 @@
-package com.example.nutritionanalysis.data
+package com.example.nutritionanalysis.data.model
 
 import android.os.Parcelable
+import com.example.nutritionanalysis.data.model.NDetails
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class TotalNutrient (
+data class TotalDaily (
 
     val FAT : NDetails,
     val FASAT : NDetails,
@@ -18,5 +19,6 @@ data class TotalNutrient (
     val CA : NDetails,
     val FE : NDetails,
     val K : NDetails
+
 
 ) : Parcelable

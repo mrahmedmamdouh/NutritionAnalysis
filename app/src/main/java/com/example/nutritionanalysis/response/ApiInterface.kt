@@ -1,6 +1,6 @@
 package com.example.nutritionanalysis.response
 
-import com.example.nutritionanalysis.data.NutritionResponse
+import com.example.nutritionanalysis.data.model.NutritionResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.http.Query

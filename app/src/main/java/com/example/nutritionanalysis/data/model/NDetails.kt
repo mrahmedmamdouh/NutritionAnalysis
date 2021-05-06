@@ -1,4 +1,4 @@
-package com.example.nutritionanalysis.data
+package com.example.nutritionanalysis.data.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

@@ -1,6 +1,7 @@
-package com.example.nutritionanalysis.data
+package com.example.nutritionanalysis.data.model
 
 import android.os.Parcelable
+import com.example.nutritionanalysis.data.model.Nutrient
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.parcel.RawValue
 
