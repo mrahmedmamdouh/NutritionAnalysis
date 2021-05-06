@@ -11,6 +11,6 @@ data class Parsed (
     val quantity : Int,
     val measure : String,
     val foodMatch: String,
-    val weight: Int,
+    val weight: Double,
     val nutrients : @RawValue Nutrient
 ) : Parcelable

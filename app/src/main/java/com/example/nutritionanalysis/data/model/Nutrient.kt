@@ -8,5 +8,5 @@ import kotlinx.android.parcel.RawValue
 @Parcelize
 data class Nutrient (
 
-    val ENERC_KCAL : @RawValue NDetails
+    val ENERC_KCAL :  NDetails
 ) : Parcelable

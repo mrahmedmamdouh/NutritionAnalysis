@@ -24,15 +24,15 @@ android {
     buildTypes {
         debug{
             buildConfigField("String", "BASE_URL", "\"https://api.edamam.com\"")
-            buildConfigField("String", "APP_ID", "\"fb1fdb97\"")
-            buildConfigField("String", "APP_KEY", "\"58e8214d7fd7132d045e75d5c3305be5\"")
+            buildConfigField("String", "APP_ID", "\"47379841\"")
+            buildConfigField("String", "APP_KEY", "\"d28718060b8adfd39783ead254df7f92\"")
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", "BASE_URL", "\"https://api.edamam.com\"")
-            buildConfigField("String", "APP_ID", "\"fb1fdb97\"")
-            buildConfigField("String", "APP_KEY", "\"58e8214d7fd7132d045e75d5c3305be5\"")
+            buildConfigField("String", "APP_ID", "\"47379841\"")
+            buildConfigField("String", "APP_KEY", "\"d28718060b8adfd39783ead254df7f92\"")
         }
     }
     compileOptions {

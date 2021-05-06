@@ -7,5 +7,5 @@ import kotlinx.android.parcel.RawValue
 @Parcelize
 data class Ingredient (
     val text : String,
-     val parsed : @RawValue ArrayList<Parsed>
+     val parsed : ArrayList<Parsed>
 ) : Parcelable
