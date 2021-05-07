@@ -29,11 +29,21 @@ class AnalyzeFragment : Fragment(R.layout.fragment_analyze) {
             ingredientText.addTextChangedListener(object : TextWatcher {
                 @SuppressLint("ResourceAsColor")
                 override fun afterTextChanged(p0: Editable?) {
-                    if (!p0.isNullOrEmpty()){
-                        analyzeBttn.backgroundTintList = ColorStateList.valueOf(resources.getColor(android.R.color.holo_green_light,resources.newTheme()))
+                    if (!p0.isNullOrEmpty()) {
+                        analyzeBttn.backgroundTintList = ColorStateList.valueOf(
+                            resources.getColor(
+                                android.R.color.holo_green_light,
+                                resources.newTheme()
+                            )
+                        )
                         analyzeBttn.isEnabled = true
-                    } else{
-                        analyzeBttn.backgroundTintList = ColorStateList.valueOf(resources.getColor(android.R.color.darker_gray,resources.newTheme()))
+                    } else {
+                        analyzeBttn.backgroundTintList = ColorStateList.valueOf(
+                            resources.getColor(
+                                android.R.color.darker_gray,
+                                resources.newTheme()
+                            )
+                        )
                         analyzeBttn.isEnabled = false
                     }
                 }
@@ -57,10 +67,10 @@ class AnalyzeFragment : Fragment(R.layout.fragment_analyze) {
             }
 
             viewmodel.repositoriesLiveData.observe(viewLifecycleOwner, Observer {
-                if (it.data != null){
+                if (it.data != null) {
                     progressBar.visibility = View.INVISIBLE
                     // navigate to list fragment to show ingredients
-                } else if (it.error != null){
+                } else if (it.error != null) {
                     errorMessage.text = it.error.message
                     progressBar.visibility = View.INVISIBLE
                 }
