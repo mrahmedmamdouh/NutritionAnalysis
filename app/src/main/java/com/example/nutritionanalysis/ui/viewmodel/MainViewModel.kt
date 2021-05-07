@@ -9,10 +9,12 @@ import com.example.nutritionanalysis.data.model.RequestPayload
 import com.example.nutritionanalysis.data.repository.MainRepository
 import com.example.nutritionanalysis.di.IoDispatcher
 import com.example.nutritionanalysis.utils.Resource
+import com.example.nutritionanalysis.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import timber.log.Timber
 import javax.inject.Inject
+import kotlin.math.roundToInt
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
@@ -21,7 +23,7 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val job = SupervisorJob()
-    val repositoriesLiveData = MutableLiveData<Resource<NutritionResponse>>()
+    val repositoriesLiveData = SingleLiveEvent<Resource<NutritionResponse>>()
     private val ioScope = CoroutineScope(ioDispatcher + job)
 
     fun fetchProducts(ingredients: RequestPayload) {
@@ -37,6 +39,10 @@ class MainViewModel @Inject constructor(
                 Timber.e(e)
             }
         }
+    }
+
+    fun roundDouble(double: Double) : Int{
+        return double.roundToInt()
     }
 
 }

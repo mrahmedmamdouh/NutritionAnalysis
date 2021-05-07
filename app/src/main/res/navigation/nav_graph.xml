@@ -5,6 +5,14 @@
 
     <fragment
         android:id="@+id/analyzeFragment"
-        android:name="com.example.nutritionanalysis.ui.AnalyzeFragment"
-        android:label="AnalyzeFragment" />
+        android:name="com.example.nutritionanalysis.ui.analyzeFragment.AnalyzeFragment"
+        android:label="AnalyzeFragment" >
+        <action
+            android:id="@+id/action_analyzeFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.example.nutritionanalysis.ui.listFragment.ListFragment"
+        android:label="ListFragment" />
 </navigation>

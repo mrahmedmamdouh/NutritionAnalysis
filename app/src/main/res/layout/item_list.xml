@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="ingr"
+            type="com.example.nutritionanalysis.data.model.Parsed" />
+
+        <variable
+            name="viewmodel"
+            type="com.example.nutritionanalysis.ui.viewmodel.MainViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/qty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="5dp"
+            android:text="@{String.valueOf(ingr.quantity)}"
+            android:textSize="14sp"
+            tools:text="@string/qty"/>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/unit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{ingr.measure}"
+            android:textSize="14sp"
+            tools:text="@string/unit"/>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/food"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{ingr.foodMatch}"
+            android:textSize="14sp"
+            tools:text="@string/food"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/calories"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{String.valueOf(viewmodel.roundDouble(ingr.nutrients.ENERC_KCAL.quantity)) +' ' +ingr.nutrients.ENERC_KCAL.unit}"
+            android:textSize="14sp"
+            tools:text="@string/calories"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/weight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{String.valueOf(viewmodel.roundDouble(ingr.weight)) +' ' +'g'}"
+            android:textSize="14sp"
+            tools:text="@string/weight"/>
+    </LinearLayout>
+</layout>

@@ -2,4 +2,10 @@
 <resources>
     <string name="analyze">Analyze</string>
     <string name="ingredients_hints">1 cup rice,10 oz chickpeas</string>
+    <string name="qty">Qty</string>
+    <string name="unit">Unit</string>
+    <string name="food">Food</string>
+    <string name="calories">Calories</string>
+    <string name="weight">Weight</string>
+    <string name="show_total_nutrition">Show Total Nutrition</string>
 </resources>

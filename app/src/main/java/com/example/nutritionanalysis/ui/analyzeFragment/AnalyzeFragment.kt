@@ -1,4 +1,4 @@
-package com.example.nutritionanalysis.ui
+package com.example.nutritionanalysis.ui.analyzeFragment
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
@@ -9,6 +9,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import com.example.nutritionanalysis.R
 import com.example.nutritionanalysis.data.model.RequestPayload
 import com.example.nutritionanalysis.databinding.FragmentAnalyzeBinding
@@ -69,16 +70,16 @@ class AnalyzeFragment : Fragment(R.layout.fragment_analyze) {
             viewmodel.repositoriesLiveData.observe(viewLifecycleOwner, Observer {
                 if (it.data != null) {
                     progressBar.visibility = View.INVISIBLE
-                    // navigate to list fragment to show ingredients
+                    ingredientText.text?.clear()
+                    val bundle = Bundle()
+                    bundle.putParcelable("ingredients", it.data)
+                    Navigation.findNavController(view)
+                        .navigate(R.id.action_analyzeFragment_to_listFragment, bundle)
                 } else if (it.error != null) {
                     errorMessage.text = it.error.message
                     progressBar.visibility = View.INVISIBLE
                 }
             })
-
-
         }
-
     }
-
 }
