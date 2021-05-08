@@ -48,7 +48,6 @@ class IngredientsAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
         if (holder is VH) {
             val itemViewHolder: VH = holder
             val currentItem = ingredients[position - 1].parsed
