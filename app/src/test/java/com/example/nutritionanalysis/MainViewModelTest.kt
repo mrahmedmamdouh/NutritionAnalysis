@@ -7,6 +7,7 @@ import com.example.nutritionanalysis.data.model.RequestPayload
 import com.example.nutritionanalysis.data.repository.MainRepository
 import com.example.nutritionanalysis.response.ApiInterface
 import com.example.nutritionanalysis.ui.viewmodel.MainViewModel
+import com.example.nutritionanalysis.utils.Resource
 import com.google.gson.Gson
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
@@ -47,7 +48,7 @@ class MainViewModelTest {
     lateinit var api: ApiInterface
     private lateinit var mainRepository: MainRepository
     private lateinit var mainViewModel: MainViewModel
-    private lateinit var nutritionObserver: Observer<NutritionResponse>
+    private lateinit var nutritionObserver: Observer<Resource<NutritionResponse>>
 
     @ExperimentalCoroutinesApi
     private val testDispatcher = TestCoroutineDispatcher()
@@ -90,7 +91,7 @@ class MainViewModelTest {
 
         mainViewModel.repositoriesLiveData.observeForever(nutritionObserver)
         mainViewModel.fetchProducts(nutrition)
-        verify(nutritionObserver, timeout(50)).onChanged(nutritionResponse)
+        verify(nutritionObserver, timeout(50)).onChanged(Resource.Success(nutritionResponse))
     }
 
 }

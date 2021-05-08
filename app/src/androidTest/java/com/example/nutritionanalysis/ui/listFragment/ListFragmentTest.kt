@@ -2,7 +2,6 @@ package com.example.nutritionanalysis.ui.listFragment
 
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
-import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions

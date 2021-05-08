@@ -1,6 +1,5 @@
 package com.example.nutritionanalysis.ui.analyzeFragment
 
-import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.test.core.app.ActivityScenario.launch
@@ -12,11 +11,8 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.nutritionanalysis.R
-import com.example.nutritionanalysis.data.model.NutritionResponse
 import com.example.nutritionanalysis.launchFragmentInHiltContainer
 import com.example.nutritionanalysis.ui.MainActivity
-import com.example.nutritionanalysis.ui.listFragment.ListFragment
-import com.google.gson.Gson
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.hamcrest.Matchers.not
 import org.junit.Test
