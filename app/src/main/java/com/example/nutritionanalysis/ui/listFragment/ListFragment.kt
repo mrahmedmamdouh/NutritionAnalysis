@@ -31,6 +31,12 @@ class ListFragment : Fragment(R.layout.fragment_list) {
             val ingredientsAdapter = IngredientsAdapter(nutritionResponse.ingredients, viewmodel)
             list.adapter = ingredientsAdapter
 
+            nutritionResponse.ingredients.forEach {ingredient ->
+                if (ingredient.parsed.isNullOrEmpty()) {
+                    errorMessage.text = getString(R.string.error_message_wrong_ingredients)
+                    return@forEach
+                }
+            }
 
             showTotalBttn.setOnClickListener {
                 val bundle = Bundle()

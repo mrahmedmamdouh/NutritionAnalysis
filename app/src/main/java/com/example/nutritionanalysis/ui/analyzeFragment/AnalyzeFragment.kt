@@ -9,18 +9,24 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.example.nutritionanalysis.R
 import com.example.nutritionanalysis.data.model.RequestPayload
 import com.example.nutritionanalysis.databinding.FragmentAnalyzeBinding
 import com.example.nutritionanalysis.ui.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.*
 
 @AndroidEntryPoint
 class AnalyzeFragment : Fragment(R.layout.fragment_analyze) {
 
     private lateinit var binding: FragmentAnalyzeBinding
     private val viewmodel by activityViewModels<MainViewModel>()
+
+    private val job = SupervisorJob()
+    private val ioScope = CoroutineScope(Dispatchers.IO + job)
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentAnalyzeBinding.bind(view)
@@ -55,6 +61,8 @@ class AnalyzeFragment : Fragment(R.layout.fragment_analyze) {
             })
 
             analyzeBttn.setOnClickListener {
+
+                errorMessage.text = ""
                 val ingredients: ArrayList<String> = ArrayList()
                 val items: String = ingredientText.text.toString()
                 val subStrings =
@@ -66,7 +74,6 @@ class AnalyzeFragment : Fragment(R.layout.fragment_analyze) {
                 viewmodel.fetchProducts(requestPayload)
                 progressBar.visibility = View.VISIBLE
             }
-
             viewmodel.repositoriesLiveData.observe(viewLifecycleOwner, Observer {
                 if (it.data != null) {
                     progressBar.visibility = View.INVISIBLE
@@ -76,10 +83,16 @@ class AnalyzeFragment : Fragment(R.layout.fragment_analyze) {
                     Navigation.findNavController(view)
                         .navigate(R.id.action_analyzeFragment_to_listFragment, bundle)
                 } else if (it.error != null) {
-                    errorMessage.text = it.error.message
+                    if (it.error.javaClass.name == "java.net.UnknownHostException") {
+                        errorMessage.text = getString(R.string.error_message_not_connected)
+                    } else {
+                        errorMessage.text = it.error.message
+                    }
                     progressBar.visibility = View.INVISIBLE
                 }
             })
         }
+
     }
+
 }

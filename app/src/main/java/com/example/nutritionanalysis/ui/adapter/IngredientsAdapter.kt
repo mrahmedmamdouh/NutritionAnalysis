@@ -51,7 +51,9 @@ class IngredientsAdapter(
         if (holder is VH) {
             val itemViewHolder: VH = holder
             val currentItem = ingredients[position - 1].parsed
+            if (!currentItem.isNullOrEmpty())
             itemViewHolder.bind(currentItem[0])
+            else ingredients.removeAt(position - 1)
 
         } else if (holder is HeaderVH) {
             val headerViewHolder: HeaderVH = holder

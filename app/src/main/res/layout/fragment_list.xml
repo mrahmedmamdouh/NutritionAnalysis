@@ -22,6 +22,16 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_list" />
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/show_total_bttn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/list" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/show_total_bttn"
             android:layout_width="wrap_content"

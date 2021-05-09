@@ -22,4 +22,6 @@
     <string name="calcium">Calcium</string>
     <string name="iron">Iron</string>
     <string name="potassium">Potassium</string>
+    <string name="error_message_not_connected">Check your internet connection and retry again later.</string>
+    <string name="error_message_wrong_ingredients">We cannot calculate the nutrition for some ingredients. Please check the ingredient spelling or if you have entered a quantities for the ingredients.</string>
 </resources>

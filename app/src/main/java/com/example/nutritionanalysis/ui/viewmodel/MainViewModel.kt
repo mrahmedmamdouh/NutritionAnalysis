@@ -22,8 +22,8 @@ class MainViewModel @Inject constructor(
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-    private val job = SupervisorJob()
     val repositoriesLiveData = SingleLiveEvent<Resource<NutritionResponse>>()
+    private val job = SupervisorJob()
     private val ioScope = CoroutineScope(ioDispatcher + job)
 
     fun fetchProducts(ingredients: RequestPayload) {
