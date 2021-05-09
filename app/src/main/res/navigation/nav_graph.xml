@@ -14,5 +14,13 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="com.example.nutritionanalysis.ui.listFragment.ListFragment"
-        android:label="ListFragment" />
+        android:label="ListFragment" >
+        <action
+            android:id="@+id/action_listFragment_to_totalAnalysisFragment"
+            app:destination="@id/totalAnalysisFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/totalAnalysisFragment"
+        android:name="com.example.nutritionanalysis.ui.totalAnalysisFragment.TotalAnalysisFragment"
+        android:label="TotalAnalysisFragment" />
 </navigation>

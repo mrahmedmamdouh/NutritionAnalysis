@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="nutrition"
+            type="com.example.nutritionanalysis.data.model.NutritionResponse" />
+
+        <variable
+            name="viewmodel"
+            type="com.example.nutritionanalysis.ui.viewmodel.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/total_nutrition_analysis"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/amount_per_serving"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="76dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView">
+
+                <TextView
+                    android:id="@+id/calories_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/calories"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/calories"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:gravity="center"
+                    android:text="@{String.valueOf(nutrition.calories)}"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:text="299" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="76dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <TextView
+                    android:id="@+id/total_fat_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/total_fat"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/total_fat_grams"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalNutrients.FAT.quantity))+' ' + nutrition.totalNutrients.FAT.unit}"
+                    android:textSize="14sp"
+                    tools:text="299 g" />
+
+                <TextView
+                    android:id="@+id/total_fat_percentage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:gravity="center"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalDaily.FAT.quantity))+' ' + nutrition.totalDaily.FAT.unit}"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:text="2 %" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="76dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear1">
+
+                <TextView
+                    android:id="@+id/saturated_fat_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/saturated_fat"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/saturated_fat_grams"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalNutrients.FASAT.quantity))+' ' + nutrition.totalNutrients.FASAT.unit}"
+                    android:textSize="14sp"
+                    tools:text="299 g" />
+
+                <TextView
+                    android:id="@+id/saturated_fat_percentage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:gravity="center"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalDaily.FASAT.quantity))+' ' + nutrition.totalDaily.FASAT.unit}"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:text="2 %" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="76dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear2">
+
+                <TextView
+                    android:id="@+id/cholesterol_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/cholesterol"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/cholesterol_grams"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalNutrients.CHOLE.quantity))+' ' + nutrition.totalNutrients.CHOLE.unit}"
+                    android:textSize="14sp"
+                    tools:text="299 g" />
+
+                <TextView
+                    android:id="@+id/cholesterol_percentage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:gravity="center"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalDaily.CHOLE.quantity))+' ' + nutrition.totalDaily.CHOLE.unit}"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:text="2 %" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="76dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear3">
+
+                <TextView
+                    android:id="@+id/sodium_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/sodium"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/sodium_grams"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalNutrients.NA.quantity))+' ' + nutrition.totalNutrients.NA.unit}"
+                    android:textSize="14sp"
+                    tools:text="299 g" />
+
+                <TextView
+                    android:id="@+id/sodium_percentage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:gravity="center"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalDaily.NA.quantity))+' ' + nutrition.totalDaily.NA.unit}"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:text="2 %" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="76dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear4">
+
+                <TextView
+                    android:id="@+id/total_carbohydrate_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/total_carbohydrate"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/total_carbohydrate_grams"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalNutrients.CHOCDF.quantity))+' ' + nutrition.totalNutrients.CHOCDF.unit}"
+                    android:textSize="14sp"
+                    tools:text="299 g" />
+
+                <TextView
+                    android:id="@+id/total_carbohydrate_percentage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalDaily.CHOCDF.quantity))+' ' + nutrition.totalDaily.CHOCDF.unit}"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="76dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear5">
+
+                <TextView
+                    android:id="@+id/total_sugars_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/total_sugars"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/total_sugars_grams"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalNutrients.SUGAR.quantity))+' ' + nutrition.totalNutrients.SUGAR.unit}"
+                    android:textSize="14sp"
+                    tools:text="299 g" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="76dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear6">
+
+                <TextView
+                    android:id="@+id/protein_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/protein"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/protein_grams"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalNutrients.PROCNT.quantity))+' ' + nutrition.totalNutrients.PROCNT.unit}"
+                    android:textSize="14sp"
+                    tools:text="299 g" />
+
+                <TextView
+                    android:id="@+id/protein_percentage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:gravity="center"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalDaily.PROCNT.quantity))+' ' + nutrition.totalDaily.PROCNT.unit}"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:text="2 %" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="76dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear7">
+
+                <TextView
+                    android:id="@+id/vitamin_d_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/vitamin_d"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/vitamin_d_grams"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalNutrients.VITD.quantity))+' ' + nutrition.totalNutrients.VITD.unit}"
+                    android:textSize="14sp"
+                    tools:text="299 g" />
+
+                <TextView
+                    android:id="@+id/vitamin_d_percentage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:gravity="center"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalDaily.VITD.quantity))+' ' + nutrition.totalDaily.VITD.unit}"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:text="2 %" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="76dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear8">
+
+                <TextView
+                    android:id="@+id/calcium_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/calcium"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/calcium_grams"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalNutrients.CA.quantity))+' ' + nutrition.totalNutrients.CA.unit}"
+                    android:textSize="14sp"
+                    tools:text="299 g" />
+
+                <TextView
+                    android:id="@+id/calcium_percentage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:gravity="center"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalDaily.CA.quantity))+' ' + nutrition.totalDaily.CA.unit}"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:text="2 %" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="76dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear9">
+
+                <TextView
+                    android:id="@+id/iron_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/iron"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/iron_grams"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalNutrients.FE.quantity))+' ' + nutrition.totalNutrients.FE.unit}"
+                    android:textSize="14sp"
+                    tools:text="299 g" />
+
+                <TextView
+                    android:id="@+id/iron_percentage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:gravity="center"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalDaily.FE.quantity))+' ' + nutrition.totalDaily.FE.unit}"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:text="2 %" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="76dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear10">
+
+                <TextView
+                    android:id="@+id/potassium_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@string/potassium"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/potassium_grams"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalNutrients.k.quantity))+' ' + nutrition.totalNutrients.k.unit}"
+                    android:textSize="14sp"
+                    tools:text="299 g" />
+
+                <TextView
+                    android:id="@+id/potassium_percentage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:gravity="center"
+                    android:text="@{String.valueOf(viewmodel.roundDouble(nutrition.totalDaily.k.quantity))+' ' + nutrition.totalDaily.k.unit}"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:text="2 %" />
+            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

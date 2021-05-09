@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nutritionanalysis.R
@@ -34,7 +35,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
             showTotalBttn.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putParcelable("ingredients",nutritionResponse)
-                // navigate to total summary screen
+                Navigation.findNavController(view).navigate(R.id.action_listFragment_to_totalAnalysisFragment, bundle)
             }
         }
     }
