@@ -44,7 +44,7 @@ class TotalAnalysisFragmentTest{
         onView(withId(R.id.potassium_percentage)).check(matches(withText(roundDouble(nutritionResponse.totalDaily.K.quantity).toString() +" "+ nutritionResponse.totalDaily.K.unit)))
     }
 
-    fun roundDouble(double: Double) : Int{
+    private fun roundDouble(double: Double) : Int{
         return double.roundToInt()
     }
 }
